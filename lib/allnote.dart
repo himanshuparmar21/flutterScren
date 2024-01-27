@@ -7,8 +7,8 @@ import 'package:screenproject/homepage.dart';
 
 var arrColor = [Colors.blue, Colors.red, Colors.green];
 
-List<dynamic> noteData = ["Title 1","Title 2","Title 3","Title 4"];
-List<dynamic> noteSubData = ["The body of the note...","The body of the note...","The body of the note...","The body of the note..."];
+List<dynamic> noteData = ["Richard Dawkins","Title 1","Title 2","Title 3","Title 4"];
+List<dynamic> noteSubData = ["The Richard Dawkins Award is an annual prize awarded by the Center for Inquiry (CFI), an American nonprofit organization. Established in 2003, it was initially awarded by the Atheist Alliance of America in coordination with Richard Dawkins and the Richard Dawkins Foundation for Reason and Science. The award was formally moved to CFI in 2019. The award was initially presented by the Atheist Alliance of America to honor an outstanding atheist who taught or advocated scientific knowledge and acceptance of nontheism, and raised public awareness. The award is currently presented by the Center for Inquiry to an individual associated with science, scholarship, education, or entertainment, and who publicly proclaims the values of secularism and rationalism, upholding scientific truth wherever it may lead. The recipient must be approved by Dawkins himself. The first Richard Dawkins Award was received by James Randi, a magician who investigated and debunked various paranormal claims. (Full list...)The Richard Dawkins Award is an annual prize awarded by the Center for Inquiry (CFI), an American nonprofit organization. Established in 2003, it was initially awarded by the Atheist Alliance of America in coordination with Richard Dawkins and the Richard Dawkins Foundation for Reason and Science. The award was formally moved to CFI in 2019. The award was initially presented by the Atheist Alliance of America to honor an outstanding atheist who taught or advocated scientific knowledge and acceptance of nontheism, and raised public awareness. The award is currently presented by the Center for Inquiry to an individual associated with science, scholarship, education, or entertainment, and who publicly proclaims the values of secularism and rationalism, upholding scientific truth wherever it may lead. The recipient must be approved by Dawkins himself. The first Richard Dawkins Award was received by James Randi, a magician who investigated and debunked various paranormal claims. (Full list...)","The body of the note...","The body of the note...","The body of the note...","The body of the note..."];
 
 class allNote extends StatefulWidget {
   const allNote({super.key});
@@ -23,10 +23,10 @@ class _allNoteState extends State<allNote> {
   @override
   void initState() {
     super.initState();
-    dynamic data = "Richard Dawkins";
-    dynamic subData = "The Richard Dawkins Award is an annual prize awarded by the Center for Inquiry (CFI), an American nonprofit organization. Established in 2003, it was initially awarded by the Atheist Alliance of America in coordination with Richard Dawkins and the Richard Dawkins Foundation for Reason and Science. The award was formally moved to CFI in 2019. The award was initially presented by the Atheist Alliance of America to honor an outstanding atheist who taught or advocated scientific knowledge and acceptance of nontheism, and raised public awareness. The award is currently presented by the Center for Inquiry to an individual associated with science, scholarship, education, or entertainment, and who publicly proclaims the values of secularism and rationalism, upholding scientific truth wherever it may lead. The recipient must be approved by Dawkins himself. The first Richard Dawkins Award was received by James Randi, a magician who investigated and debunked various paranormal claims. (Full list...)";
-    noteData.add(data);
-    noteSubData.add(subData);
+    // dynamic data = "";
+    // dynamic subData = "";
+    // noteData.add(data);
+    // noteSubData.add(subData);
   }
 
   bool isGridView = true;

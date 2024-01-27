@@ -53,7 +53,11 @@ Widget dataShow(index,context){
               ),
               Expanded(
                 child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      // noteData.removeAt(index);
+                      // noteSubData.removeAt(index);
+                      // Navigator.pop(context);
+                    },
                     icon: Icon(
                       Icons.save_alt_outlined,
                       color: Colors.white,
