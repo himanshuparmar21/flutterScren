@@ -63,147 +63,153 @@ class _allNoteState extends State<allNote> {
               ),
             ),
           ],
+
         ),
-        body: Column(
-            children: [
-          Row(children: [
-            Expanded(
-              flex: 7,
-              child: IconButton(
-                  alignment: Alignment.topLeft,
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: Icon(
-                    Icons.arrow_back,
-                    color: Colors.white,
-                  )),
-            ),
-            Expanded(
-              child: IconButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => addNote(),
-                        )).then((value) {
-                      setState(() {
-                        noteData.add(value[0]);
-                        noteSubData.add(value[1]);
-                        print(noteData+noteSubData);
-                      });
-                    });;
-                  },
-                  icon: Icon(
-                    Icons.add_circle_outline_rounded,
-                    color: Colors.white,
-                  )),
-            ),
-            Expanded(
-              child: IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.more_horiz_outlined,
-                    color: Colors.white,
-                  )),
-            ),
-          ]),
-          Container(
-            height: 720,
-            width: 410,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border.all(
-                color: Colors.white,
-              ),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(22),
-                topRight: Radius.circular(22),
-              ),
-            ),
-            child: Column(
+        body: Padding(
+          padding: const EdgeInsets.only(top:9.0),
+          child: Column(
               children: [
-                Container(
-                  margin: EdgeInsets.all(10),
-                  child: SearchBar(
-                    side: MaterialStateProperty.all(
-                        const BorderSide(color: Colors.blue)),
-                    backgroundColor: MaterialStateProperty.all(Colors.white),
-                    leading: Icon(
-                      Icons.search,
-                      size: 35,
-                      color: Colors.blue,
-                    ),
-                    hintText: "Search",
+            Row(children: [
+              Expanded(
+                flex: 7,
+                child: IconButton(
+                    alignment: Alignment.topLeft,
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: Icon(
+                      Icons.arrow_back,
+                      color: Colors.white,
+                    )),
+              ),
+              Expanded(
+                child: IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => addNote(),
+                          )).then((value) {
+                        setState(() {
+                          noteData.add(value[0]);
+                          noteSubData.add(value[1]);
+                          print(noteData+noteSubData);
+                        });
+                      });;
+                    },
+                    icon: Icon(
+                      Icons.add_circle_outline_rounded,
+                      color: Colors.white,
+                    )),
+              ),
+              Expanded(
+                child: IconButton(
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.more_horiz_outlined,
+                      color: Colors.white,
+                    )),
+              ),
+            ]),
+            Expanded(
+              child: Container(
+                height: 710,
+                width: 410,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border.all(
+                    color: Colors.white,
+                  ),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(22),
+                    topRight: Radius.circular(22),
                   ),
                 ),
-                Container(
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Container(
-                          padding: EdgeInsets.only(left: 15),
-                          child: Text(
-                            "All Notes",
-                            style: TextStyle(
-                                fontSize: 23.5, fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        child: Icon(
-                          Icons.filter_alt_outlined,
-                          size: 30,
+                child: Column(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.all(10),
+                      child: SearchBar(
+                        side: MaterialStateProperty.all(
+                            const BorderSide(color: Colors.blue)),
+                        backgroundColor: MaterialStateProperty.all(Colors.white),
+                        leading: Icon(
+                          Icons.search,
+                          size: 35,
                           color: Colors.blue,
                         ),
+                        hintText: "Search",
                       ),
-                      IconButton(
-                        onPressed: () {
-                          setState(() {
-                            isGridView = !isGridView;
-                          });
-                          print("Change Grid To list");
-                        },
-                        icon: Icon(isGridView
-                            ? Icons.grid_view_outlined
-                            : Icons.list_outlined),
-                        color: Colors.blue,
-                      ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: Container(
-                    margin: EdgeInsets.only(left: 5, right: 5),
-                    child: isGridView
-                        ? GridView.builder(
-                            gridDelegate:
-                                SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 3,
-                                    crossAxisSpacing: 5,
-                                    mainAxisSpacing: 5),
-                            itemBuilder: (context, index) {
-                              return Container(
-                                child: FilledCardExample(index,context),
-                              );
-                            },
-                            itemCount: noteData.length,
-                          )
-                        : ListView.builder(
-                            scrollDirection: Axis.vertical,
-                            itemBuilder: (context, index) {
-                              return Container(
-                                child: listTemplate(index,context),
-                              );
-                            },
-                            itemCount: noteData.length,
+                    ),
+                    Container(
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              padding: EdgeInsets.only(left: 15),
+                              child: Text(
+                                "All Notes",
+                                style: TextStyle(
+                                    fontSize: 23.5, fontWeight: FontWeight.bold),
+                              ),
+                            ),
                           ),
-                  ),
-                )
-              ],
+                          Container(
+                            child: Icon(
+                              Icons.filter_alt_outlined,
+                              size: 30,
+                              color: Colors.blue,
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              setState(() {
+                                isGridView = !isGridView;
+                              });
+                              print("Change Grid To list");
+                            },
+                            icon: Icon(isGridView
+                                ? Icons.grid_view_outlined
+                                : Icons.list_outlined),
+                            color: Colors.blue,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        margin: EdgeInsets.only(left: 5, right: 5),
+                        child: isGridView
+                            ? GridView.builder(
+                                gridDelegate:
+                                    SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 3,
+                                        crossAxisSpacing: 5,
+                                        mainAxisSpacing: 5),
+                                itemBuilder: (context, index) {
+                                  return Container(
+                                    child: FilledCardExample(index,context),
+                                  );
+                                },
+                                itemCount: noteData.length,
+                              )
+                            : ListView.builder(
+                                scrollDirection: Axis.vertical,
+                                itemBuilder: (context, index) {
+                                  return Container(
+                                    child: listTemplate(index,context),
+                                  );
+                                },
+                                itemCount: noteData.length,
+                              ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
-          ),
-        ]),
+          ]),
+        ),
       ),
     );
   }
