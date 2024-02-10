@@ -58,9 +58,11 @@ class _homepageState extends State<homepage> {
               ),
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context,'/login');
+              },
               icon: Icon(
-                Icons.more_horiz_outlined,
+                Icons.person_rounded,
                 color: Colors.blue,
               ),
             ),
@@ -121,25 +123,27 @@ class _homepageState extends State<homepage> {
             Container(
               margin: EdgeInsets.all(15),
             ),
-            Row(
-              children: [
-                Expanded(
-                  flex: 5,
-                  child: Container(
-                    alignment: Alignment.topLeft,
-                    margin: EdgeInsets.only(left: 18),
-                    child: Text(
-                      "Media",
-                      style: TextStyle(
-                          fontSize: 21.5, fontWeight: FontWeight.w600),
+            SingleChildScrollView(
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 5,
+                    child: Container(
+                      alignment: Alignment.topLeft,
+                      margin: EdgeInsets.only(left: 18),
+                      child: Text(
+                        "Media",
+                        style: TextStyle(
+                            fontSize: 21.5, fontWeight: FontWeight.w600),
+                      ),
                     ),
                   ),
-                ),
-                Expanded(
-                  child: IconButton(
-                      onPressed: () {}, icon: Icon(Icons.more_horiz_outlined)),
-                ),
-              ],
+                  Expanded(
+                    child: IconButton(
+                        onPressed: () {}, icon: Icon(Icons.more_horiz_outlined)),
+                  ),
+                ],
+              ),
             ),
             SizedBox(
               height: 10,

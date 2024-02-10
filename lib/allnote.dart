@@ -141,39 +141,41 @@ class _allNoteState extends State<allNote> {
                         hintText: "Search",
                       ),
                     ),
-                    Container(
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: Container(
-                              padding: EdgeInsets.only(left: 15),
-                              child: Text(
-                                "All Notes",
-                                style: TextStyle(
-                                    fontSize: 23.5, fontWeight: FontWeight.bold),
+                    SingleChildScrollView(
+                      child: Container(
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Container(
+                                padding: EdgeInsets.only(left: 15),
+                                child: Text(
+                                  "All Notes",
+                                  style: TextStyle(
+                                      fontSize: 23.5, fontWeight: FontWeight.bold),
+                                ),
                               ),
                             ),
-                          ),
-                          Container(
-                            child: Icon(
-                              Icons.filter_alt_outlined,
-                              size: 30,
+                            Container(
+                              child: Icon(
+                                Icons.filter_alt_outlined,
+                                size: 30,
+                                color: Colors.blue,
+                              ),
+                            ),
+                            IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  isGridView = !isGridView;
+                                });
+                                print("Change Grid To list");
+                              },
+                              icon: Icon(isGridView
+                                  ? Icons.grid_view_outlined
+                                  : Icons.list_outlined),
                               color: Colors.blue,
                             ),
-                          ),
-                          IconButton(
-                            onPressed: () {
-                              setState(() {
-                                isGridView = !isGridView;
-                              });
-                              print("Change Grid To list");
-                            },
-                            icon: Icon(isGridView
-                                ? Icons.grid_view_outlined
-                                : Icons.list_outlined),
-                            color: Colors.blue,
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                     Expanded(
