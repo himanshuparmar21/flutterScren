@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class register extends StatefulWidget {
   const register({Key? key}) : super(key: key);
@@ -149,11 +150,16 @@ class _registerState extends State<register> {
               ),
               SizedBox(height: 20),
               ElevatedButton(
-                onPressed: () {
+                onPressed: () async{
                   if (_formKey.currentState!.validate()) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text('Register Success')),
                     );
+                    SharedPreferences pref = await SharedPreferences.getInstance();
+                    pref.setString("name", nameController.text.toString());
+                    pref.setString("email", emailController.text.toString());
+                    pref.setString("password", passwordController.text.toString());
+                    pref.setString("repassword", rePasswordController.text.toString());
                     Navigator.popAndPushNamed(context, '/login');
                   }
                 },

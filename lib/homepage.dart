@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:screenproject/FilledCardExample.dart';
 import 'package:screenproject/allnote.dart';
 import 'package:screenproject/addnote.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class homepage extends StatefulWidget {
   const homepage({Key? key}) : super(key: key);
@@ -11,12 +12,21 @@ class homepage extends StatefulWidget {
   State<homepage> createState() => _homepageState();
 }
 
-TextEditingController urlController = TextEditingController();
-
 class _homepageState extends State<homepage> {
   @override
   void initState() {
     super.initState();
+    checkLoginStatus();
+  }
+
+  TextEditingController urlController = TextEditingController();
+  bool? isLogin = false;
+
+  void checkLoginStatus() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    setState(() {
+      isLogin = pref.getBool("isLogin");
+    });
   }
 
   @override
@@ -58,8 +68,14 @@ class _homepageState extends State<homepage> {
               ),
             ),
             IconButton(
-              onPressed: () {
-                Navigator.pushNamed(context,'/login');
+              onPressed: () async {
+                SharedPreferences pref = await SharedPreferences.getInstance();
+                isLogin = pref.getBool("isLogin");
+                if (isLogin != null && isLogin!) {
+                  Navigator.pushNamed(context, '/profile');
+                } else {
+                  Navigator.pushNamed(context, '/login');
+                }
               },
               icon: Icon(
                 Icons.person_rounded,

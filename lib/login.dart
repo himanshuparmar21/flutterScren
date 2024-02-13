@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class login extends StatefulWidget {
   const login({Key? key}) : super(key: key);
@@ -9,10 +10,12 @@ class login extends StatefulWidget {
 
 class _loginState extends State<login> {
   final _formKey = GlobalKey<FormState>();
-  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   bool _isPasswordVisible = true;
 
+  String email = "";
+  String pass = "";
   void _togglePasswordVisibility() {
     setState(() {
       _isPasswordVisible = !_isPasswordVisible;
@@ -33,11 +36,22 @@ class _loginState extends State<login> {
       return '* Required';
     } else if (!regex.hasMatch(value)) {
       return 'Enter a valid email address';
+    } else if(emailController!=email){
+      return "Enter Right Email";
     } else {
       return null;
     }
   }
 
+  @override
+  void setState(VoidCallback fn) {
+    getData();
+  }
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,7 +76,7 @@ class _loginState extends State<login> {
                 children: [
                   SizedBox(height: 10),
                   TextFormField(
-                    controller: nameController,
+                    controller: emailController,
                     validator: _validateEmail,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
@@ -78,6 +92,9 @@ class _loginState extends State<login> {
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return "Enter Password";
+                      }
+                      if(passwordController!=pass){
+                        return "Enter Right Password";
                       }
                       return null;
                     },
@@ -114,12 +131,14 @@ class _loginState extends State<login> {
                   ),
                   SizedBox(height: 15),
                   ElevatedButton(
-                    onPressed: () {
+                    onPressed: () async{
                       if (_formKey.currentState!.validate()) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(content: Text('Login Success!')),
                         );
-                        Navigator.popAndPushNamed(context, '/');
+                        SharedPreferences pref = await SharedPreferences.getInstance();
+                        pref.setBool("isLogin", true);
+                        Navigator.pushReplacementNamed(context, '/');
                       }
                     },
                     child: Text("Submit"),
@@ -131,5 +150,14 @@ class _loginState extends State<login> {
         ],
       ),
     );
+  }
+
+  void getData() async{
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    email = await pref.getString("name")!;
+    pass = await pref.getString("password")!;
+    setState(() {
+
+    });
   }
 }

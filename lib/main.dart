@@ -4,6 +4,7 @@ import 'package:screenproject/allnote.dart';
 import 'package:screenproject/dataShow.dart';
 import 'package:screenproject/homepage.dart';
 import 'package:screenproject/login.dart';
+import 'package:screenproject/profile.dart';
 import 'package:screenproject/register.dart';
 
 void main() {
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         '/allNote' : (context) => const allNote(),
         '/login' : (context) => const login(),
         '/register' : (context) => register(),
+        '/profile' : (context) => profile(),
       },
       // home: homepage(),
     );
