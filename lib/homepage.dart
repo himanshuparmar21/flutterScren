@@ -35,7 +35,7 @@ class _homepageState extends State<homepage> {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            "Recents Notes",
+            "Recents hi",
             style: TextStyle(
               fontWeight: FontWeight.w600,
             ),

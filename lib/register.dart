@@ -156,10 +156,10 @@ class _registerState extends State<register> {
                       SnackBar(content: Text('Register Success')),
                     );
                     SharedPreferences pref = await SharedPreferences.getInstance();
-                    pref.setString("name", nameController.text.toString());
-                    pref.setString("email", emailController.text.toString());
-                    pref.setString("password", passwordController.text.toString());
-                    pref.setString("repassword", rePasswordController.text.toString());
+                    await pref.setString("name", nameController.text.toString());
+                    await pref.setString("email", emailController.text.toString());
+                    await pref.setString("password", passwordController.text.toString());
+                    await pref.setString("repassword", rePasswordController.text.toString());
                     Navigator.popAndPushNamed(context, '/login');
                   }
                 },

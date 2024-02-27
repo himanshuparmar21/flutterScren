@@ -77,7 +77,7 @@ class _loginState extends State<login> {
                   SizedBox(height: 10),
                   TextFormField(
                     controller: emailController,
-                    validator: _validateEmail,
+                    // validator: _validateEmail,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10)),
@@ -89,15 +89,15 @@ class _loginState extends State<login> {
                   TextFormField(
                     controller: passwordController,
                     obscureText: _isPasswordVisible,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return "Enter Password";
-                      }
-                      if(passwordController!=pass){
-                        return "Enter Right Password";
-                      }
-                      return null;
-                    },
+                    // validator: (value) {
+                    //   if (value == null || value.isEmpty) {
+                    //     return "Enter Password";
+                    //   }
+                    //   if(passwordController!=pass){
+                    //     return "Enter Right Password";
+                    //   }
+                    //   return null;
+                    // },
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10)),
@@ -137,7 +137,7 @@ class _loginState extends State<login> {
                           const SnackBar(content: Text('Login Success!')),
                         );
                         SharedPreferences pref = await SharedPreferences.getInstance();
-                        pref.setBool("isLogin", true);
+                        await pref.setBool("isLogin", true);
                         Navigator.pushReplacementNamed(context, '/');
                       }
                     },
